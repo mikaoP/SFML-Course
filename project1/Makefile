@@ -1,12 +1,11 @@
-LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+OBJECTS = Game.o
+LDLIBS = -lsfml-graphics -lsfml-window -lsfml-system
 CPPFLAGS = -I include
 
 vpath %.hpp include
 vpath %.cpp src
 
-main: main.o Game.o $(LIBS)
-	g++ -o $@ $^
-%.o: %.cpp %.hpp
+main: $(OBJECTS) $(LDLIBS)
 
 clean:
 	rm -rf *.o main
